@@ -14,8 +14,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tomeraminof.github.io/matan-workshops-site/" />
   <meta property="og:locale" content="he_IL" />
-  <meta property="og:image" content="https://tomeraminof.github.io/matan-workshops-site/assets/images/reference/matan-portrait.webp" />
-  <meta property="og:image:alt" content="מתן שביט — שחקן, במאי ומנחה סדנאות" />
+  <meta property="og:image" content="https://tomeraminof.github.io/matan-workshops-site/assets/images/generated/hero-workshop.webp" />
+  <meta property="og:image:alt" content="הדמיית סדנת משחק ואלתור לצוות" />
   <meta name="twitter:card" content="summary_large_image" />
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
@@ -265,7 +265,7 @@
       inset: 0;
       background: linear-gradient(180deg, transparent 48%, rgba(23, 17, 27, .48));
     }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-photo-caption {
       position: absolute;
       z-index: 3;
@@ -420,7 +420,7 @@
     .track-card {
       display: flex;
       flex-direction: column;
-      min-height: 520px;
+      min-height: 630px;
       overflow: hidden;
       background: var(--white);
       border: 1px solid var(--line);
@@ -428,25 +428,23 @@
       transition: transform .22s ease, box-shadow .22s ease;
     }
     .track-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-    .track-visual {
+    .track-photo {
       position: relative;
-      display: flex;
-      align-items: flex-end;
-      height: 190px;
+      height: 245px;
       overflow: hidden;
-      padding: 24px;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--plum), var(--purple));
+      background: #d7d0ca;
     }
-    .track-card:nth-child(2) .track-visual { background: linear-gradient(135deg, #26352d, #60755f); }
-    .track-card:nth-child(3) .track-visual { color: var(--ink); background: linear-gradient(135deg, #e8d07d, #f6e9b5); }
-    .track-symbol { margin-right: auto; font-family: Georgia, serif; font-size: 4rem; line-height: 1; opacity: .82; }
+    .track-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(22, 15, 27, .52)); }
+    .track-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .track-card:hover .track-photo img { transform: scale(1.035); }
+    .track-card:nth-child(1) .track-photo img { object-position: center 42%; }
+    .track-card:nth-child(2) .track-photo img { object-position: center 42%; }
+    .track-card:nth-child(3) .track-photo img { object-position: center 38%; }
     .track-index {
       position: absolute;
       z-index: 2;
       right: 20px;
-      top: 20px;
-      bottom: auto;
+      bottom: 18px;
       color: var(--white);
       font-family: Georgia, serif;
       font-size: 2.2rem;
@@ -490,10 +488,11 @@
     .gallery-item:hover img { transform: scale(1.04); }
     .gallery-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(21, 14, 25, .65)); }
     .gallery-item strong { position: absolute; z-index: 2; right: 22px; bottom: 19px; color: var(--white); font-size: 1.02rem; }
-    .gallery-item:nth-child(1) img { object-position: center 28%; }
-    .gallery-item:nth-child(2) img { object-position: center 25%; }
+    .gallery-item:nth-child(1) img { object-position: center; }
+    .gallery-item:nth-child(2) img { object-position: center; }
     .gallery-item:nth-child(3) img { object-position: center 22%; }
-    .gallery-item:nth-child(4) img { object-position: center 28%; }
+    .gallery-item:nth-child(4) img { object-position: center; }
+    .mockup-note { margin: 16px 0 0; color: var(--muted); font-size: .78rem; text-align: center; }
 
     .process-grid {
       display: grid;
@@ -774,7 +773,7 @@
         <div class="hero-media reveal">
           <div class="hero-badge">✦</div>
           <div class="hero-photo">
-            <img src="assets/images/reference/matan-portrait.webp" alt="מתן שביט — שחקן, במאי ומנחה סדנאות" fetchpriority="high" />
+            <img src="assets/images/generated/hero-workshop.webp" alt="הדמיית סדנת משחק ואלתור לצוות" fetchpriority="high" />
             <div class="hero-photo-caption"><strong>כלים מהבמה. השפעה בחדר.</strong><span>תקשורת · נוכחות · עבודת צוות</span></div>
           </div>
           <div class="floating-card fc-1">נוכחות שמובילה חדר</div>
@@ -845,7 +844,7 @@
 
         <div class="track-grid">
           <article class="track-card reveal">
-            <div class="track-visual" aria-hidden="true"><span class="track-index">01</span><span class="track-symbol">◎</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-team.webp" alt="הדמיית סדנה לתקשורת ועבודת צוות" loading="lazy" /><span class="track-index" aria-hidden="true">01</span></div>
             <div class="track-content">
               <div class="track-label">צוות כאנסמבל · YES, AND</div>
               <h3>תקשורת, אמון וגמישות צוותית</h3>
@@ -855,7 +854,7 @@
           </article>
 
           <article class="track-card reveal">
-            <div class="track-visual" aria-hidden="true"><span class="track-index">02</span><span class="track-symbol">↗</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-leadership.webp" alt="הדמיית סדנה לנוכחות מנהיגותית" loading="lazy" /><span class="track-index" aria-hidden="true">02</span></div>
             <div class="track-content">
               <div class="track-label">המנהל על הבמה · EXECUTIVE PRESENCE</div>
               <h3>נוכחות, מסר והובלת חדר</h3>
@@ -865,7 +864,7 @@
           </article>
 
           <article class="track-card reveal">
-            <div class="track-visual" aria-hidden="true"><span class="track-index">03</span><span class="track-symbol">✦</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-product.webp" alt="הדמיית סדנה לאמפתיה והבנת המשתמש" loading="lazy" /><span class="track-index" aria-hidden="true">03</span></div>
             <div class="track-content">
               <div class="track-label">נכנסים לנעלי האחר · POINT OF VIEW</div>
               <h3>אמפתיה והבנת המשתמש</h3>
@@ -885,15 +884,16 @@
     <section class="section section-soft">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><span class="eyebrow">מי נמצא איתכם בחדר</span><h2>ניסיון בימתי אמיתי. הנחיה אנושית, נגישה ומדויקת.</h2></div>
-          <p>מתן מביא לסדנה ניסיון כשחקן, במאי ומורה — ומתרגם אותו למרחב מקצועי ומשוחרר שבו אנשים יכולים לנסות, להגיב, לצחוק וללמוד יחד.</p>
+          <div><span class="eyebrow">איך זה מרגיש בחדר</span><h2>מקצועי, משוחרר ומלא אנרגיה.</h2></div>
+          <p>מרחב שבו אנשים יכולים לנסות, להגיב, לצחוק וללמוד יחד — עם הנחיה אנושית, נגישה ומדויקת.</p>
         </div>
         <div class="gallery">
-          <figure class="gallery-item reveal"><img src="assets/images/reference/matan-bw.webp" alt="מתן שביט — צילום מקצועי" loading="lazy" /><strong>נוכחות, גוף וקול</strong></figure>
-          <figure class="gallery-item reveal"><img src="assets/images/reference/matan-smiling.webp" alt="מתן שביט" loading="lazy" /><strong>מקצועיות בגובה העיניים</strong></figure>
+          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-circle.webp" alt="הדמיית תרגול קבוצתי בסדנת אלתור" loading="lazy" /><strong>כולם חלק מהתרגול</strong></figure>
+          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-session.webp" alt="הדמיית מתן מנחה צוות בחדר סדנה" loading="lazy" /><strong>מקצועיות בגובה העיניים</strong></figure>
           <figure class="gallery-item reveal"><img src="assets/images/reference/matan-stage.webp" alt="מתן שביט על הבמה" loading="lazy" /><strong>ניסיון בימתי אמיתי</strong></figure>
-          <figure class="gallery-item reveal"><img src="assets/images/reference/matan-portrait.webp" alt="מתן שביט — צילום פורטרט" loading="lazy" /><strong>כלים מהבמה לעולם העבודה</strong></figure>
+          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-candid.webp" alt="הדמיית רגע טבעי במהלך סדנה לצוות" loading="lazy" /><strong>חיבור שנוצר דרך עשייה</strong></figure>
         </div>
+        <p class="mockup-note">תמונות הסדנה הן הדמיות שנוצרו ב־AI לצורך המחשת הקונספט במוקאפ.</p>
       </div>
     </section>
 
@@ -994,7 +994,7 @@
       </div>
       <div class="wrap footer">
         <span>© מתן שביט · סדנאות משחק ואלתור לארגונים</span>
-        <span>תקשורת · נוכחות · עבודת צוות · יצירתיות</span>
+        <span>מוקאפ להמחשה · התוכן והתמונות יעברו אישור לפני האתר הרשמי</span>
       </div>
     </section>
   </main>

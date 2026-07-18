@@ -1,12 +1,14 @@
 # Matan Shavit — Workshops Landing Page
 
-Public Hebrew RTL landing page for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations.
+Public Hebrew RTL landing-page mockup for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations. The mockup is intended to communicate the concept and visual direction before a final website is built and approved.
 
 ## Project structure
 
 - `index.html` — complete responsive website, including CSS and lightweight JavaScript.
 - `assets/icons/` — local site icon.
 - `assets/images/reference/` — optimized real photographs of Matan used by the public page.
+- `assets/images/generated/` — AI-generated workshop scenes used to communicate the mockup's intended atmosphere.
+- `docs/` — image-generation brief and earlier visual previews retained for the next design/content review.
 
 ## Local preview
 
@@ -36,6 +38,7 @@ The site links directly to WhatsApp at `+972 52-405-5740`. It does not collect o
 
 - The page is designed RTL-first and responsive.
 - Testimonials and company logos must only be published after verification and permission.
-- Public imagery must be genuine photography; workshop mockups and AI-generated event scenes are not used.
+- Workshop-scene images are AI-generated mockup assets and are identified as such on the page. Review or replace them before publishing an official website.
+- Real photographs of Matan remain in the about and stage sections to support authenticity.
 - All assets required by the public page are stored in this repository and use
   relative local paths.
