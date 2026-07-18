@@ -19,29 +19,26 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+## Live website
+
+This repository is ready to be served by GitHub Pages from the `main` branch and
+the repository root (`/`). After GitHub Pages is enabled, view the public site at:
+
+https://tomeraminof.github.io/matan-workshops-site/
+
+In the repository settings, select **Pages → Build and deployment → Deploy from
+a branch**, then choose **main** and **/(root)**.
+
 ## Workflow
 
 1. Approve copy, hierarchy, and layout in the HTML mockup.
 2. Generate and approve workshop imagery featuring Matan.
 3. Keep all source and generated imagery as local repository assets.
-4. Rebuild the approved design in Wix section by section.
+4. Publish the approved static site through GitHub Pages.
 
 ## Notes
 
 - The page is designed RTL-first and responsive.
 - Testimonials and company logos must only be published after verification and permission.
-- Reference photos are stored for design use and should not be published automatically.
-
-## Local reference photos
-
-The site expects six source photos under `assets/images/reference/` and does not rely on Wix URLs after they are downloaded.
-
-```bash
-python scripts/download_reference_images.py
-```
-
-The source mapping is stored in `assets/images/reference/manifest.json`. These photos are source/reference assets; generated workshop scenes belong in `assets/images/generated/`.
-
-## GitHub image sync
-
-On the first push to `main`, GitHub Actions downloads the six Wix source photos into `assets/images/reference/` and commits them back to the repository. The workflow can also be run manually from the Actions tab.
+- All assets required by the public page are stored in this repository and use
+  relative local paths.
