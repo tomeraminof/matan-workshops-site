@@ -1,13 +1,12 @@
 # Matan Shavit — Workshops Landing Page
 
-Hebrew RTL landing-page mockup for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations.
+Public Hebrew RTL landing page for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations.
 
 ## Project structure
 
-- `index.html` — current responsive mockup.
-- `assets/images/reference/` — original reference photos supplied for visual development.
-- `assets/images/generated/` — approved AI-generated workshop imagery.
-- `docs/previews/` — static screenshots for quick review.
+- `index.html` — complete responsive website, including CSS and lightweight JavaScript.
+- `assets/icons/` — local site icon.
+- `assets/images/reference/` — optimized real photographs of Matan used by the public page.
 
 ## Local preview
 
@@ -29,16 +28,14 @@ https://tomeraminof.github.io/matan-workshops-site/
 In the repository settings, select **Pages → Build and deployment → Deploy from
 a branch**, then choose **main** and **/(root)**.
 
-## Workflow
+## Contact
 
-1. Approve copy, hierarchy, and layout in the HTML mockup.
-2. Generate and approve workshop imagery featuring Matan.
-3. Keep all source and generated imagery as local repository assets.
-4. Publish the approved static site through GitHub Pages.
+The site links directly to WhatsApp at `+972 52-405-5740`. It does not collect or store form submissions.
 
 ## Notes
 
 - The page is designed RTL-first and responsive.
 - Testimonials and company logos must only be published after verification and permission.
+- Public imagery must be genuine photography; workshop mockups and AI-generated event scenes are not used.
 - All assets required by the public page are stored in this repository and use
   relative local paths.
