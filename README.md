@@ -32,7 +32,7 @@ a branch**, then choose **main** and **/(root)**.
 
 ## Contact
 
-The site links directly to WhatsApp at `+972 52-405-5740`. It does not collect or store form submissions.
+The site links directly to WhatsApp at `+972 54-207-8475`. The contact form only composes a WhatsApp message in the visitor's browser; it does not collect or store submissions.
 
 ## Notes
 
