@@ -37,6 +37,7 @@ The site links directly to WhatsApp at `+972 54-207-8475`. The contact form only
 ## Notes
 
 - The page is designed RTL-first and responsive.
+- The landing page is organized into six focused sections: hero, value, workshops, process and outcomes, about, and FAQ/contact.
 - Testimonials and company logos must only be published after verification and permission.
 - Workshop-scene images are AI-generated mockup assets and are identified as such on the page. Review or replace them before publishing an official website.
 - Real photographs of Matan remain in the about and stage sections to support authenticity.

@@ -353,11 +353,16 @@
     }
     .benefit-card p { margin: 0; color: var(--muted); }
 
-    .human-section {
+    .human-panel {
       position: relative;
       overflow: hidden;
+      margin-top: 80px;
+      padding: 64px;
+      color: var(--white);
+      background: var(--plum);
+      border-radius: 40px;
     }
-    .human-section::before {
+    .human-panel::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -365,6 +370,8 @@
       background-size: 48px 48px;
       mask-image: linear-gradient(to bottom, #000, transparent 92%);
     }
+    .human-panel .eyebrow { color: #d7c0ec; }
+    .human-panel .lead { color: rgba(255, 255, 255, .72); }
     .human-grid {
       position: relative;
       z-index: 2;
@@ -493,6 +500,13 @@
     .gallery-item:nth-child(3) img { object-position: center 22%; }
     .gallery-item:nth-child(4) img { object-position: center; }
     .mockup-note { margin: 16px 0 0; color: var(--muted); font-size: .78rem; text-align: center; }
+    .gallery-panel {
+      margin-top: 80px;
+      padding: 56px;
+      background: #eee9e2;
+      border-radius: 36px;
+    }
+    .gallery-panel .section-head { margin-bottom: 38px; }
 
     .process-grid {
       display: grid;
@@ -517,6 +531,7 @@
     }
     .takeaway span { display: block; margin-bottom: 16px; color: var(--purple); font-size: 1.5rem; font-weight: 900; }
     .takeaway p { margin: 0; color: var(--muted); }
+    .outcomes-block { margin-top: 76px; padding-top: 72px; border-top: 1px solid rgba(25,21,29,.12); }
 
     .about-grid {
       display: grid;
@@ -572,6 +587,17 @@
     .faq-answer p { padding: 0 0 22px; margin: 0; }
     .faq-item.open .faq-answer { max-height: 220px; }
     .faq-item.open .faq-question span:last-child { transform: rotate(45deg); }
+    .faq-panel {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 76px;
+      padding: 52px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 36px;
+      box-shadow: 0 26px 70px rgba(0,0,0,.2);
+    }
+    .faq-panel h2 { font-size: clamp(2.4rem, 4vw, 4.5rem); }
 
     .contact {
       position: relative;
@@ -599,9 +625,9 @@
       align-items: start;
       gap: 72px;
     }
-    .contact h2 { font-size: clamp(2.8rem, 5vw, 5.5rem); }
-    .contact .eyebrow { color: #e2c9ff; }
-    .contact .lead { color: rgba(255,255,255,.72); }
+    .contact-grid h2 { font-size: clamp(2.8rem, 5vw, 5.5rem); }
+    .contact-grid .eyebrow { color: #e2c9ff; }
+    .contact-grid .lead { color: rgba(255,255,255,.72); }
     .contact-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
     .contact-tags span { padding: 9px 13px; color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.15); border-radius: 999px; font-size: .85rem; }
     .contact-form {
@@ -690,6 +716,8 @@
       .process-step + .process-step { border-right: 0; border-top: 1px solid var(--line); }
       .human-visual { max-width: 650px; width: 100%; margin: 0 auto; }
       .about-visual { max-width: 650px; width: 100%; margin: 0 auto; }
+      .human-panel, .gallery-panel { padding: 44px; }
+      .faq-panel { padding: 42px; }
     }
 
     @media (max-width: 760px) {
@@ -731,6 +759,11 @@
       .gallery-item { height: 235px; margin-bottom: 12px; }
       .gallery-item:first-child { height: 320px; }
       .takeaways-grid { grid-template-columns: 1fr; }
+      .human-panel { margin-top: 56px; padding: 34px 22px; border-radius: 28px; }
+      .human-visual { min-height: 440px; }
+      .gallery-panel { margin-top: 56px; padding: 34px 18px; border-radius: 28px; }
+      .outcomes-block { margin-top: 56px; padding-top: 52px; }
+      .faq-panel { margin-bottom: 56px; padding: 34px 22px; border-radius: 28px; }
       .about-visual { min-height: 540px; }
       .about-main { inset: 0 24px 35px 0; }
       .about-stage { width: 46%; }
@@ -831,22 +864,21 @@
             <p>החלפת תגובת ה״אבל״ בחשיבה שבונה על רעיונות, מזיזה תהליכים ומאפשרת לאנשים להעז.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-dark human-section">
-      <div class="wrap human-grid">
-        <div class="human-copy reveal">
-          <span class="eyebrow">היתרון האנושי בעידן AI</span>
-          <h2>ככל שהכלים נעשים חכמים יותר, כך עולה הערך של אנשים שיודעים לעבוד טוב יותר יחד.</h2>
-          <p class="lead">ידע טכני נשאר חיוני. אבל היכולת להקשיב, לשכנע, להתמודד עם אי־ודאות, להוביל קבוצה ולהבין אדם אחר — היא זו שהופכת מומחיות להשפעה.</p>
-          <div class="human-skills">
-            <span>תקשורת</span><span>נוכחות</span><span>אמפתיה</span><span>שיתוף פעולה</span><span>תגובה לשינוי</span><span>ביטחון פסיכולוגי</span>
+        <div class="human-panel">
+          <div class="human-grid">
+            <div class="human-copy reveal">
+              <span class="eyebrow">היתרון האנושי בעידן AI</span>
+              <h2>ככל שהכלים נעשים חכמים יותר, כך עולה הערך של אנשים שיודעים לעבוד טוב יותר יחד.</h2>
+              <p class="lead">ידע טכני נשאר חיוני. אבל היכולת להקשיב, לשכנע, להתמודד עם אי־ודאות, להוביל קבוצה ולהבין אדם אחר — היא זו שהופכת מומחיות להשפעה.</p>
+              <div class="human-skills">
+                <span>תקשורת</span><span>נוכחות</span><span>אמפתיה</span><span>שיתוף פעולה</span><span>תגובה לשינוי</span><span>ביטחון פסיכולוגי</span>
+              </div>
+            </div>
+            <div class="human-visual reveal">
+              <img src="assets/images/reference/matan-cutout.webp" alt="מתן שביט" loading="lazy" />
+              <div class="human-quote">הטכנולוגיה יכולה להאיץ את העבודה. היכולת האנושית הופכת אותה לעבודת צוות.</div>
+            </div>
           </div>
-        </div>
-        <div class="human-visual reveal">
-          <img src="assets/images/reference/matan-cutout.webp" alt="מתן שביט" loading="lazy" />
-          <div class="human-quote">הטכנולוגיה יכולה להאיץ את העבודה. היכולת האנושית הופכת אותה לעבודת צוות.</div>
         </div>
       </div>
     </section>
@@ -894,26 +926,23 @@
           <p>ארגז הכלים: אלתור · אנסמבל · תנועה · שפת גוף · פיתוח קול · סטוריטלינג · בניית דמות · עמידה מול קהל</p>
           <a href="#contact">נדבר על מה מתאים לכם ←</a>
         </div>
+        <div class="gallery-panel">
+          <div class="section-head reveal">
+            <div><span class="eyebrow">איך זה מרגיש בחדר</span><h2>מקצועי מספיק כדי לייצר ערך. משוחרר מספיק כדי שאנשים באמת ישתתפו.</h2></div>
+            <p>הסדנה אינה הרצאה פסיבית. המשתתפים קמים, מנסים, מגיבים, צוחקים, מקבלים משוב ומגלים בזמן אמת איך הם פועלים בתוך קבוצה.</p>
+          </div>
+          <div class="gallery">
+            <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-circle.webp" alt="הדמיית תרגול קבוצתי בסדנת אלתור" loading="lazy" /><strong>תרגול קבוצתי פעיל</strong></figure>
+            <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-session.webp" alt="הדמיית מתן מנחה צוות בחדר סדנה" loading="lazy" /><strong>עבודה עם קהל ופרטנר</strong></figure>
+            <figure class="gallery-item reveal"><img src="assets/images/reference/matan-stage.webp" alt="מתן שביט על הבמה" loading="lazy" /><strong>ניסיון בימתי אמיתי</strong></figure>
+            <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-candid.webp" alt="הדמיית רגע טבעי במהלך סדנה לצוות" loading="lazy" /><strong>מרחב בטוח להתנסות, לטעות ולצמוח</strong></figure>
+          </div>
+          <p class="mockup-note">תמונות הסדנה הן הדמיות שנוצרו ב־AI לצורך המחשת הקונספט במוקאפ.</p>
+        </div>
       </div>
     </section>
 
     <section class="section section-soft">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><span class="eyebrow">איך זה מרגיש בחדר</span><h2>מקצועי מספיק כדי לייצר ערך. משוחרר מספיק כדי שאנשים באמת ישתתפו.</h2></div>
-          <p>הסדנה אינה הרצאה פסיבית. המשתתפים קמים, מנסים, מגיבים, צוחקים, מקבלים משוב ומגלים בזמן אמת איך הם פועלים בתוך קבוצה.</p>
-        </div>
-        <div class="gallery">
-          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-circle.webp" alt="הדמיית תרגול קבוצתי בסדנת אלתור" loading="lazy" /><strong>תרגול קבוצתי פעיל</strong></figure>
-          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-session.webp" alt="הדמיית מתן מנחה צוות בחדר סדנה" loading="lazy" /><strong>עבודה עם קהל ופרטנר</strong></figure>
-          <figure class="gallery-item reveal"><img src="assets/images/reference/matan-stage.webp" alt="מתן שביט על הבמה" loading="lazy" /><strong>ניסיון בימתי אמיתי</strong></figure>
-          <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-candid.webp" alt="הדמיית רגע טבעי במהלך סדנה לצוות" loading="lazy" /><strong>מרחב בטוח להתנסות, לטעות ולצמוח</strong></figure>
-        </div>
-        <p class="mockup-note">תמונות הסדנה הן הדמיות שנוצרו ב־AI לצורך המחשת הקונספט במוקאפ.</p>
-      </div>
-    </section>
-
-    <section class="section section-white">
       <div class="wrap">
         <div class="section-head reveal">
           <div><span class="eyebrow">איך זה עובד</span><h2>מהשיחה הראשונה ועד הרגע שבו כולם על הרגליים.</h2></div>
@@ -924,20 +953,17 @@
           <article class="process-step"><div class="step-number">02 / בונים</div><h3>מרכיבים מסלול מדויק</h3><p>התרגילים, הקצב ורמת העומק נבחרים בהתאם לקבוצה, לזמן ולמטרה.</p></article>
           <article class="process-step"><div class="step-number">03 / מתרגלים</div><h3>חווים, צוחקים ולומדים</h3><p>סדנה פעילה, נגישה ומוחזקת היטב — ללא צורך בניסיון קודם במשחק.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-soft">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><span class="eyebrow">מה נשאר אחרי הסדנה?</span><h2>חוויה טובה — וכלים שתזהו גם ביום שאחריה.</h2></div>
-          <p>התרגול מתרחש בעולם המשחק, אבל השפה וההרגלים חוזרים איתכם לישיבות, לפרזנטציות, לשיחות צוות ולעבודה עם לקוחות.</p>
-        </div>
-        <div class="takeaways-grid">
-          <article class="takeaway reveal"><span>01</span><h3>יותר השתתפות</h3><p>יותר אנשים מרגישים בטוחים להציע, להגיב ולהישמע.</p></article>
-          <article class="takeaway reveal"><span>02</span><h3>שפה משותפת</h3><p>עקרונות פשוטים שהצוות יכול להזכיר לעצמו גם בהמשך.</p></article>
-          <article class="takeaway reveal"><span>03</span><h3>תגובה טובה לשינוי</h3><p>פחות קיפאון והתנגדות, יותר סקרנות ובנייה משותפת.</p></article>
-          <article class="takeaway reveal"><span>04</span><h3>נוכחות אנושית</h3><p>יכולת טובה יותר להוביל, לספר סיפור ולהחזיק חדר.</p></article>
+        <div class="outcomes-block">
+          <div class="section-head reveal">
+            <div><span class="eyebrow">מה נשאר אחרי הסדנה?</span><h2>חוויה טובה — וכלים שתזהו גם ביום שאחריה.</h2></div>
+            <p>התרגול מתרחש בעולם המשחק, אבל השפה וההרגלים חוזרים איתכם לישיבות, לפרזנטציות, לשיחות צוות ולעבודה עם לקוחות.</p>
+          </div>
+          <div class="takeaways-grid">
+            <article class="takeaway reveal"><span>01</span><h3>יותר השתתפות</h3><p>יותר אנשים מרגישים בטוחים להציע, להגיב ולהישמע.</p></article>
+            <article class="takeaway reveal"><span>02</span><h3>שפה משותפת</h3><p>עקרונות פשוטים שהצוות יכול להזכיר לעצמו גם בהמשך.</p></article>
+            <article class="takeaway reveal"><span>03</span><h3>תגובה טובה לשינוי</h3><p>פחות קיפאון והתנגדות, יותר סקרנות ובנייה משותפת.</p></article>
+            <article class="takeaway reveal"><span>04</span><h3>נוכחות אנושית</h3><p>יכולת טובה יותר להוביל, לספר סיפור ולהחזיק חדר.</p></article>
+          </div>
         </div>
       </div>
     </section>
@@ -965,10 +991,12 @@
       </div>
     </section>
 
-    <section class="section section-white" id="faq">
-      <div class="wrap faq-grid">
-        <div class="reveal"><span class="eyebrow">שאלות נפוצות</span><h2>לפני שעולים על הרגליים.</h2><p class="lead">כמה תשובות קצרות לשאלות שחברות ומנהלים שואלים לפני סדנה.</p></div>
-        <div class="faq-list reveal">
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="faq-panel" id="faq">
+          <div class="faq-grid">
+            <div class="reveal"><span class="eyebrow">שאלות נפוצות</span><h2>לפני שעולים על הרגליים.</h2><p class="lead">כמה תשובות קצרות לשאלות שחברות ומנהלים שואלים לפני סדנה.</p></div>
+            <div class="faq-list reveal">
           <article class="faq-item open">
             <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-answer-1"><span>האם צריך ניסיון קודם במשחק?</span><span aria-hidden="true">+</span></button>
             <div class="faq-answer" id="faq-answer-1"><p>ממש לא. התרגילים בנויים כך שכל אחד ואחת יכולים להשתתף בקצב שמתאים להם, ללא צורך ברקע בימתי.</p></div>
@@ -984,13 +1012,12 @@
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4"><span>כמה זמן נמשכת סדנה?</span><span aria-hidden="true">+</span></button>
             <div class="faq-answer" id="faq-answer-4" hidden><p>משך המפגש נקבע לפי המטרה, גודל הקבוצה והמסגרת. ניתן לבנות מפגש ממוקד או תהליך עמוק יותר במספר מפגשים.</p></div>
-          </article>
+              </article>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid">
+        <div class="contact-grid">
         <div class="reveal">
           <span class="eyebrow">מתחילים משיחה קצרה</span>
           <h2>איזו יכולת תרצו לחזק בצוות?</h2>
@@ -1013,7 +1040,8 @@
           <button class="submit-button" type="submit">שלחו לי פרטים ב־WhatsApp</button>
           <div class="form-direct">או התקשרו אליי: <a href="tel:+972542078475" dir="ltr">054-207-8475</a></div>
           <p class="contact-note">הפרטים אינם נשמרים באתר; הם עוברים ישירות ל־WhatsApp רק לאחר לחיצה.</p>
-        </form>
+          </form>
+        </div>
       </div>
       <div class="wrap footer">
         <span>© מתן שביט · סדנאות משחק ואלתור לארגונים</span>
