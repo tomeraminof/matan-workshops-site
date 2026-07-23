@@ -17,7 +17,12 @@
   <meta property="og:image" content="https://tomeraminof.github.io/matan-workshops-site/assets/images/reference/matan-portrait.webp" />
   <meta property="og:image:alt" content="מתן שביט — שחקן, במאי ומנחה סדנאות" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    if (new URLSearchParams(window.location.search).get('embed') === '1') {
+      document.documentElement.classList.add('is-embedded');
+    }
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -307,48 +312,6 @@
       box-shadow: 0 16px 34px rgba(195, 153, 42, .3);
     }
 
-    .statement {
-      max-width: 1100px;
-      margin: 0 auto 42px;
-      text-align: center;
-      font-size: clamp(2.2rem, 4vw, 4.2rem);
-      line-height: 1.07;
-      letter-spacing: -.05em;
-    }
-    .statement em { color: var(--purple); font-family: Georgia, serif; font-weight: 400; }
-    .benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .benefit-card {
-      position: relative;
-      min-height: 220px;
-      padding: 27px;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-    .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 22px 55px rgba(35, 24, 42, .1); }
-    .benefit-number {
-      position: absolute;
-      top: 20px;
-      left: 24px;
-      color: rgba(110, 63, 160, .12);
-      font-family: Georgia, serif;
-      font-size: 5rem;
-      line-height: 1;
-    }
-    .benefit-icon {
-      display: grid;
-      place-items: center;
-      width: 56px;
-      height: 56px;
-      margin-bottom: 28px;
-      background: var(--lavender);
-      border-radius: 18px;
-      font-size: 1.5rem;
-    }
-    .benefit-card p { margin: 0; color: var(--muted); }
-
     .human-band {
       position: relative;
       display: grid;
@@ -419,6 +382,24 @@
     }
     .track-content { display: flex; flex: 1; flex-direction: column; padding: 22px; }
     .track-label { margin-bottom: 10px; color: var(--purple); font-size: .75rem; font-weight: 900; letter-spacing: .06em; }
+    .track-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--ink-soft);
+      font-size: .82rem;
+      font-weight: 900;
+    }
+    .track-value::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      background: var(--yellow);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(240,201,91,.18);
+    }
     .track-content p { color: var(--muted); }
     .track-meta { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
     .track-meta strong { display: block; margin-bottom: 5px; font-size: .82rem; }
@@ -457,7 +438,6 @@
     .gallery-item:nth-child(2) img { object-position: center; }
     .gallery-item:nth-child(3) img { object-position: center 22%; }
     .gallery-item:nth-child(4) img { object-position: center; }
-    .mockup-note { margin: 16px 0 0; color: var(--muted); font-size: .78rem; text-align: center; }
     .gallery-panel {
       margin-top: 46px;
       padding: 30px;
@@ -481,6 +461,24 @@
     .step-number { margin-bottom: 24px; color: var(--purple); font-family: Georgia, serif; font-size: 1.05rem; }
     .process-step p { margin-bottom: 0; color: var(--muted); }
     .process-result { display: block; margin-top: 15px; color: var(--ink); font-size: .88rem; font-weight: 900; }
+    .experience-layout {
+      display: grid;
+      grid-template-columns: .98fr 1.02fr;
+      align-items: stretch;
+      gap: 20px;
+    }
+    .experience-layout .gallery-panel {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 24px;
+      background: var(--white);
+    }
+    .experience-layout .gallery { flex: 1; grid-template-columns: 1fr 1fr; grid-template-rows: 210px 150px; }
+    .experience-layout .gallery-item:first-child { grid-column: 1 / -1; }
+    .experience-layout .process-grid { grid-template-columns: 1fr; height: 100%; border-radius: 28px; }
+    .experience-layout .process-step { min-height: 0; padding: 24px 28px; }
+    .experience-layout .process-step + .process-step { border-right: 0; border-top: 1px solid var(--line); }
 
     .about-grid {
       display: grid;
@@ -547,11 +545,13 @@
       box-shadow: 0 26px 70px rgba(0,0,0,.2);
     }
     .faq-panel h2 { font-size: clamp(2.4rem, 4vw, 4.5rem); }
+    .faq-section { background: #eee9e2; }
+    .faq-section .faq-panel { margin: 0; box-shadow: 0 18px 55px rgba(35,24,42,.08); }
 
     .contact {
       position: relative;
       overflow: hidden;
-      padding: 72px 0 34px;
+      padding: 76px 0;
       background: var(--ink);
       color: var(--white);
     }
@@ -588,6 +588,15 @@
     }
     .contact-form h3 { margin-bottom: 8px; font-size: 1.65rem; }
     .contact-form > p { margin: 0 0 22px; color: var(--muted); }
+    .form-welcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 9px;
+      color: var(--purple);
+      font-size: .8rem;
+      font-weight: 900;
+    }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     .field { margin-bottom: 14px; }
     label { display: block; margin-bottom: 7px; font-size: .8rem; font-weight: 900; }
@@ -615,6 +624,7 @@
     .form-direct { display: flex; justify-content: center; gap: 7px; margin-top: 14px; color: var(--muted); font-size: .8rem; }
     .form-direct a { color: var(--purple); font-weight: 900; }
     .contact-note { margin: 12px 0 0 !important; font-size: .74rem; text-align: center; }
+    .site-footer { padding: 0 0 30px; background: var(--ink); color: var(--white); }
     .footer {
       position: relative;
       z-index: 2;
@@ -627,6 +637,7 @@
       border-top: 1px solid rgba(255,255,255,.11);
       font-size: .82rem;
     }
+    .site-footer .footer { margin-top: 0; }
 
     .whatsapp {
       position: fixed;
@@ -645,6 +656,10 @@
       font-size: .9rem;
       font-weight: 900;
     }
+    .is-embedded .site-header,
+    .is-embedded .site-footer,
+    .is-embedded .whatsapp { display: none; }
+    .is-embedded .hero { padding-top: 78px; }
 
     .reveal { opacity: 1; transform: none; }
     .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
@@ -656,6 +671,7 @@
       .hero-media { min-height: 520px; max-width: 700px; width: 100%; margin: 0 auto; }
       .track-card { min-height: 450px; }
       .track-photo { height: 175px; }
+      .experience-layout { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; }
       .process-step + .process-step { border-right: 0; border-top: 1px solid var(--line); }
       .about-visual { max-width: 650px; width: 100%; margin: 0 auto; }
@@ -682,6 +698,7 @@
       .brand-text { font-size: .88rem; }
       .brand-text small { display: none; }
       .hero { padding-top: 112px; padding-bottom: 52px; }
+      .is-embedded .hero { padding-top: 54px; }
       h1 { font-size: 3.15rem; }
       .hero-media { min-height: 360px; }
       .hero-photo { inset: 0 4px; border-radius: 30px; }
@@ -693,10 +710,7 @@
       .btn-row { flex-direction: column; }
       .btn { width: 100%; }
       .section { padding: 58px 0; }
-      .statement { text-align: right; }
-      .benefit-grid, .track-grid { grid-template-columns: 1fr; }
-      .benefit-card { min-height: 0; padding: 22px; }
-      .benefit-icon { width: 48px; height: 48px; margin-bottom: 14px; }
+      .track-grid { grid-template-columns: 1fr; }
       .track-card { min-height: 0; }
       .track-photo { height: 155px; }
       .track-content { padding: 18px; }
@@ -708,6 +722,8 @@
       .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 140px; }
       .gallery-item:first-child { grid-column: span 2; }
       .gallery-panel { margin-top: 36px; padding: 25px 16px; border-radius: 24px; }
+      .experience-layout .gallery-panel { margin: 0; }
+      .experience-layout .gallery { grid-template-rows: 180px 135px; }
       .faq-panel { margin-bottom: 38px; padding: 28px 20px; border-radius: 24px; }
       .process-step { min-height: 0; padding: 24px; }
       .step-number { margin-bottom: 12px; }
@@ -736,9 +752,9 @@
         <span class="brand-text">מתן שביט<small>סדנאות משחק ואלתור לארגונים</small></span>
       </a>
       <nav class="nav-links" id="mainNav" aria-label="ניווט ראשי">
-        <a href="#why">למה משחק?</a>
         <a href="#workshops">הסדנאות</a>
-        <a href="#about">עליי</a>
+        <a href="#experience">איך זה עובד</a>
+        <a href="#about">על מתן</a>
         <a href="#faq">שאלות נפוצות</a>
         <a class="nav-cta" href="#contact">לתיאום שיחה</a>
       </nav>
@@ -778,49 +794,18 @@
       </div>
     </section>
 
-    <section class="section" id="why">
-      <div class="wrap">
-        <p class="statement reveal">חוויה שמחברת אנשים.<br><em>תרגול שנשאר גם ביום שאחרי.</em></p>
-        <div class="benefit-grid">
-          <article class="benefit-card reveal">
-            <span class="benefit-number">01</span>
-            <div class="benefit-icon">◎</div>
-            <h3>תקשורת והקשבה תחת לחץ</h3>
-            <p>להישאר נוכחים, לקרוא את החדר ולהגיב למה שקורה — גם תחת לחץ.</p>
-          </article>
-          <article class="benefit-card reveal">
-            <span class="benefit-number">02</span>
-            <div class="benefit-icon">↗</div>
-            <h3>נוכחות, מסר והובלה</h3>
-            <p>להוביל שיחה, ישיבה או פרזנטציה בביטחון, בהירות וחיבור לקהל.</p>
-          </article>
-          <article class="benefit-card reveal">
-            <span class="benefit-number">03</span>
-            <div class="benefit-icon">✦</div>
-            <h3>יצירתיות וגמישות מחשבתית</h3>
-            <p>לבנות על רעיונות, להסתגל לשינוי וליצור פתרון יחד.</p>
-          </article>
-        </div>
-        <div class="human-band reveal">
-          <h3>בעידן AI, היכולת האנושית היא היתרון: להקשיב, לשכנע ולעבוד יחד באי־ודאות.</h3>
-          <div class="human-skills">
-            <span>תקשורת</span><span>נוכחות</span><span>אמפתיה</span><span>שיתוף פעולה</span><span>תגובה לשינוי</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section section-white" id="workshops">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><span class="eyebrow">מסלולי הסדנאות</span><h2>הסדנה מותאמת לאתגר — לא להפך.</h2></div>
-          <p>בוחרים את האתגר המרכזי, ומתאימים אליו את התרגילים, הקצב ורמת העומק.</p>
+          <div><span class="eyebrow">מה מחזקים בסדנה</span><h2>שלושה אתגרים. שלושה מסלולים שאפשר להתאים לצוות.</h2></div>
+          <p>כל מסלול מחבר בין יכולת אנושית חשובה לבין תרגול מעשי מעולם המשחק והאלתור.</p>
         </div>
 
         <div class="track-grid">
           <article class="track-card reveal">
-            <div class="track-photo"><img src="assets/images/generated/track-team.webp" alt="הדמיית סדנה לתקשורת ועבודת צוות" loading="lazy" /><span class="track-index" aria-hidden="true">01</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-team.webp" alt="סדנת תקשורת ועבודת צוות" loading="lazy" /><span class="track-index" aria-hidden="true">01</span></div>
             <div class="track-content">
+              <div class="track-value">מחזק הקשבה, אמון וגמישות</div>
               <div class="track-label">צוות כאנסמבל · YES, AND</div>
               <h3>תקשורת, אמון וגמישות צוותית</h3>
               <p>אלתור ואנסמבל לחיזוק הקשבה, אמון ותגובה משותפת לשינוי.</p>
@@ -829,8 +814,9 @@
           </article>
 
           <article class="track-card reveal">
-            <div class="track-photo"><img src="assets/images/generated/track-leadership.webp" alt="הדמיית סדנה לנוכחות מנהיגותית" loading="lazy" /><span class="track-index" aria-hidden="true">02</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-leadership.webp" alt="סדנה לנוכחות מנהיגותית והובלת חדר" loading="lazy" /><span class="track-index" aria-hidden="true">02</span></div>
             <div class="track-content">
+              <div class="track-value">מחזק נוכחות, מסר והובלה</div>
               <div class="track-label">המנהל על הבמה · EXECUTIVE PRESENCE</div>
               <h3>נוכחות, מסר והובלת חדר</h3>
               <p>קול, שפת גוף וסטוריטלינג להעברת מסר בטוח, חד ואנושי.</p>
@@ -839,8 +825,9 @@
           </article>
 
           <article class="track-card reveal">
-            <div class="track-photo"><img src="assets/images/generated/track-product.webp" alt="הדמיית סדנה לאמפתיה והבנת המשתמש" loading="lazy" /><span class="track-index" aria-hidden="true">03</span></div>
+            <div class="track-photo"><img src="assets/images/generated/track-product.webp" alt="סדנה לאמפתיה והבנת המשתמש" loading="lazy" /><span class="track-index" aria-hidden="true">03</span></div>
             <div class="track-content">
+              <div class="track-value">מחזק אמפתיה וחשיבה יצירתית</div>
               <div class="track-label">נכנסים לנעלי האחר · POINT OF VIEW</div>
               <h3>אמפתיה והבנת המשתמש</h3>
               <p>נקודת מבט ובניית דמות כדי להבין צרכים ולחדד שיחה על המשתמש.</p>
@@ -853,31 +840,74 @@
           <p>אלתור · אנסמבל · שפת גוף · קול · סטוריטלינג · בניית דמות</p>
           <a href="#contact">נדבר על מה מתאים לכם ←</a>
         </div>
-        <div class="gallery-panel">
-          <div class="gallery-intro reveal">
-            <h3>פעיל, מקצועי ומשוחרר</h3>
-            <p>קמים, מנסים, צוחקים ומקבלים משוב בזמן אמת.</p>
+        <div class="human-band reveal">
+          <h3>בעידן AI, היכולת האנושית היא היתרון: להקשיב, לשכנע ולעבוד יחד באי־ודאות.</h3>
+          <div class="human-skills">
+            <span>תקשורת</span><span>נוכחות</span><span>אמפתיה</span><span>שיתוף פעולה</span><span>תגובה לשינוי</span>
           </div>
-          <div class="gallery">
-            <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-circle.webp" alt="הדמיית תרגול קבוצתי בסדנת אלתור" loading="lazy" /><strong>תרגול קבוצתי פעיל</strong></figure>
-            <figure class="gallery-item reveal"><img src="assets/images/generated/gallery-session.webp" alt="הדמיית מתן מנחה צוות בחדר סדנה" loading="lazy" /><strong>עבודה עם קהל ופרטנר</strong></figure>
-            <figure class="gallery-item reveal"><img src="assets/images/reference/matan-stage.webp" alt="מתן שביט על הבמה" loading="lazy" /><strong>ניסיון בימתי אמיתי</strong></figure>
-          </div>
-          <p class="mockup-note">תמונות הסדנה הן הדמיות שנוצרו ב־AI לצורך המחשת הקונספט במוקאפ.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-soft">
+    <section class="section section-soft" id="experience">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><span class="eyebrow">איך זה עובד ומה נשאר</span><h2>שלושה צעדים. תוצאה שממשיכה לעבודה.</h2></div>
-          <p>תהליך ממוקד שמחבר בין הצורך הארגוני, חוויה פעילה וכלים שימושיים לצוות.</p>
+          <div><span class="eyebrow">איך זה מרגיש ואיך זה עובד</span><h2>פעיל, מקצועי ומשוחרר — בשלושה צעדים פשוטים.</h2></div>
+          <p>קמים, מנסים, צוחקים ומקבלים משוב בזמן אמת. התהליך מתחיל בצורך של הצוות ומסתיים בכלים שחוזרים לעבודה.</p>
         </div>
-        <div class="process-grid reveal">
-          <article class="process-step"><div class="step-number">01 / מכירים</div><h3>מגדירים את האתגר</h3><p>מטרה, קהל ודינמיקה בשיחת התאמה קצרה.</p><span class="process-result">התוצאה: סדנה רלוונטית, לא גנרית.</span></article>
-          <article class="process-step"><div class="step-number">02 / בונים</div><h3>מתאימים את התרגול</h3><p>בחירת תרגילים, קצב ורמת חשיפה שמתאימים לקבוצה.</p><span class="process-result">התוצאה: השתתפות בטוחה ומשמעותית.</span></article>
-          <article class="process-step"><div class="step-number">03 / מתרגלים</div><h3>חווים ומיישמים</h3><p>מתנסים, מקבלים משוב ומתרגמים את החוויה לעבודה.</p><span class="process-result">התוצאה: שפה וכלים שנשארים בצוות.</span></article>
+        <div class="experience-layout">
+          <div class="gallery-panel reveal">
+            <div class="gallery-intro">
+              <h3>מה קורה בחדר?</h3>
+              <p>תרגול חי, עבודה עם פרטנר וניסיון בימתי.</p>
+            </div>
+            <div class="gallery">
+              <figure class="gallery-item"><img src="assets/images/generated/gallery-circle.webp" alt="תרגול קבוצתי בסדנת אלתור" loading="lazy" /><strong>תרגול קבוצתי פעיל</strong></figure>
+              <figure class="gallery-item"><img src="assets/images/generated/gallery-session.webp" alt="עבודה עם קהל ופרטנר בסדנה" loading="lazy" /><strong>עבודה עם קהל ופרטנר</strong></figure>
+              <figure class="gallery-item"><img src="assets/images/reference/matan-stage.webp" alt="מתן שביט על הבמה" loading="lazy" /><strong>ניסיון בימתי אמיתי</strong></figure>
+            </div>
+          </div>
+          <div class="process-grid reveal">
+            <article class="process-step"><div class="step-number">01 / מכירים</div><h3>מגדירים את האתגר</h3><p>מטרה, קהל ודינמיקה בשיחת התאמה קצרה.</p><span class="process-result">התוצאה: סדנה רלוונטית, לא גנרית.</span></article>
+            <article class="process-step"><div class="step-number">02 / בונים</div><h3>מתאימים את התרגול</h3><p>בחירת תרגילים, קצב ורמת חשיפה שמתאימים לקבוצה.</p><span class="process-result">התוצאה: השתתפות בטוחה ומשמעותית.</span></article>
+            <article class="process-step"><div class="step-number">03 / מתרגלים</div><h3>חווים ומיישמים</h3><p>מתנסים, מקבלים משוב ומתרגמים את החוויה לעבודה.</p><span class="process-result">התוצאה: שפה וכלים שנשארים בצוות.</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="reveal">
+            <span class="eyebrow">מתחילים בשיחה קצרה</span>
+            <h2>בואו נמצא את הסדנה שמתאימה לצוות שלכם.</h2>
+            <p class="lead">כתבו לי כמה מילים על הקבוצה ועל מה שחשוב לכם. אחזור עם שאלות קצרות וכיוון ראשוני — בלי התחייבות.</p>
+            <div class="contact-tags"><span>צוותי טכנולוגיה</span><span>מנהלים</span><span>Offsite עם ערך</span></div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm">
+            <span class="form-welcome">נעים להכיר 👋</span>
+            <h3>ספרו לי, ממש בקצרה</h3>
+            <p>הלחיצה תפתח הודעת WhatsApp מוכנה. תוכלו לערוך אותה לפני השליחה.</p>
+            <div class="form-row">
+              <div class="field"><label for="name">איך קוראים לך?</label><input id="name" name="name" autocomplete="name" required placeholder="השם שלך" /></div>
+              <div class="field"><label for="company">מאיזו חברה? <span aria-hidden="true">(לא חובה)</span></label><input id="company" name="company" autocomplete="organization" placeholder="שם החברה או הארגון" /></div>
+            </div>
+            <div class="field">
+              <label for="audience">למי מיועדת הסדנה?</label>
+              <select id="audience" name="audience">
+                <option value="צוות טכנולוגי">צוות טכנולוגי</option>
+                <option value="מנהלים וראשי צוותים">מנהלים וראשי צוותים</option>
+                <option value="צוות רב־תחומי">צוות רב־תחומי</option>
+                <option value="קבוצה אחרת">קבוצה אחרת</option>
+              </select>
+            </div>
+            <div class="field"><label for="goal">מה הייתם שמחים שיקרה אחרי הסדנה?</label><textarea id="goal" name="goal" placeholder="למשל: יותר פתיחות בישיבות, חיבור בין הצוותים או ביטחון בהצגה מול קהל..."></textarea></div>
+            <button class="submit-button" type="submit">פותחים הודעה למתן ב־WhatsApp</button>
+            <div class="form-direct">מעדיפים לדבר? <a href="tel:+972542078475" dir="ltr">054-207-8475</a></div>
+            <p class="contact-note">אין התחייבות והפרטים לא נשמרים באתר.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -903,57 +933,37 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="section faq-section" id="faq">
       <div class="wrap">
-        <div class="faq-panel" id="faq">
+        <div class="faq-panel">
           <div class="faq-grid">
-            <div class="reveal"><span class="eyebrow">שאלות נפוצות</span><h2>לפני שמתחילים.</h2><p class="lead">שלוש תשובות קצרות.</p></div>
+            <div class="reveal"><span class="eyebrow">שאלות נפוצות</span><h2>לפני שמתחילים.</h2><p class="lead">שלוש תשובות קצרות שיעזרו להבין אם זה מתאים.</p></div>
             <div class="faq-list reveal">
-          <article class="faq-item open">
-            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-answer-1"><span>האם צריך ניסיון קודם במשחק?</span><span aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq-answer-1"><p>ממש לא. התרגילים בנויים כך שכל אחד ואחת יכולים להשתתף בקצב שמתאים להם, ללא צורך ברקע בימתי.</p></div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2"><span>האם זו סדנת גיבוש או סדנה מקצועית?</span><span aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq-answer-2" hidden><p>גם החוויה וגם הערך חשובים. הסדנה מצחיקה ומשחררת, אבל כל תרגיל נבחר לפי מטרה מקצועית: תקשורת, נוכחות, עבודת צוות, יצירתיות או אמפתיה.</p></div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3"><span>אפשר להתאים את התוכן למנהלים או לצוות טכנולוגי?</span><span aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq-answer-3" hidden><p>כן. התוכן, השפה, רמת האתגר והדוגמאות מותאמים לתפקידים, לאופי הקבוצה ולמטרת המפגש.</p></div>
-          </article>
+              <article class="faq-item open">
+                <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-answer-1"><span>האם צריך ניסיון קודם במשחק?</span><span aria-hidden="true">+</span></button>
+                <div class="faq-answer" id="faq-answer-1"><p>ממש לא. התרגילים בנויים כך שכל אחד ואחת יכולים להשתתף בקצב שמתאים להם, ללא צורך ברקע בימתי.</p></div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2"><span>האם זו סדנת גיבוש או סדנה מקצועית?</span><span aria-hidden="true">+</span></button>
+                <div class="faq-answer" id="faq-answer-2" hidden><p>גם החוויה וגם הערך חשובים. הסדנה מצחיקה ומשחררת, אבל כל תרגיל נבחר לפי מטרה מקצועית: תקשורת, נוכחות, עבודת צוות, יצירתיות או אמפתיה.</p></div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3"><span>אפשר להתאים את התוכן למנהלים או לצוות טכנולוגי?</span><span aria-hidden="true">+</span></button>
+                <div class="faq-answer" id="faq-answer-3" hidden><p>כן. התוכן, השפה, רמת האתגר והדוגמאות מותאמים לתפקידים, לאופי הקבוצה ולמטרת המפגש.</p></div>
+              </article>
             </div>
           </div>
         </div>
-
-        <div class="contact-grid">
-        <div class="reveal">
-          <span class="eyebrow">מתחילים משיחה קצרה</span>
-          <h2>איזו יכולת תרצו לחזק בצוות?</h2>
-          <p class="lead">ספרו לי מי המשתתפים ומה תרצו שיקרה במפגש, ואציע כיוון מתאים.</p>
-          <div class="contact-tags"><span>צוותי טכנולוגיה</span><span>מנהלים</span><span>Offsite עם ערך</span></div>
-        </div>
-
-        <form class="contact-form reveal" id="contactForm">
-          <h3>ספרו לי בקצרה על הצוות</h3>
-          <p>כמה פרטים, והודעת WhatsApp מוכנה נפתחת אליי.</p>
-          <div class="form-row">
-            <div class="field"><label for="name">איך קוראים לך?</label><input id="name" name="name" autocomplete="name" required placeholder="שם מלא" /></div>
-            <div class="field"><label for="company">מאיזו חברה?</label><input id="company" name="company" autocomplete="organization" required placeholder="שם החברה" /></div>
-          </div>
-          <div class="field"><label for="audience">מי הקהל?</label><select id="audience" name="audience"><option value="צוות טכנולוגי">צוות טכנולוגי</option><option value="מנהלים וראשי צוותים">מנהלים וראשי צוותים</option><option value="צוות רב־תחומי">צוות רב־תחומי</option><option value="אחר">אחר</option></select></div>
-          <div class="field"><label for="goal">מה תרצו לחזק?</label><textarea id="goal" name="goal" placeholder="כמה מילים על הצוות, האירוע או האתגר..."></textarea></div>
-          <button class="submit-button" type="submit">שלחו לי פרטים ב־WhatsApp</button>
-          <div class="form-direct">או התקשרו אליי: <a href="tel:+972542078475" dir="ltr">054-207-8475</a></div>
-          <p class="contact-note">הפרטים אינם נשמרים באתר; הם עוברים ישירות ל־WhatsApp רק לאחר לחיצה.</p>
-          </form>
-        </div>
-      </div>
-      <div class="wrap footer">
-        <span>© מתן שביט · סדנאות משחק ואלתור לארגונים</span>
-        <span>מוקאפ להמחשה · התוכן והתמונות יעברו אישור לפני האתר הרשמי</span>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer">
+      <span>© מתן שביט · סדנאות משחק ואלתור לארגונים</span>
+      <span><a href="tel:+972542078475" dir="ltr">054-207-8475</a> · אפשר גם ב־WhatsApp</span>
+    </div>
+  </footer>
 
   <a class="whatsapp" href="https://wa.me/972542078475?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%AA%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%90%D7%AA%D7%A8%20%D7%94%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%AA%D7%90%D7%99%D7%9D%20%D7%A1%D7%93%D7%A0%D7%94%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA%20%D7%A9%D7%9C%D7%A0%D7%95." target="_blank" rel="noopener noreferrer" aria-label="פתיחת שיחת WhatsApp עם מתן">WhatsApp</a>
 
@@ -996,12 +1006,12 @@
       const goal = formData.get('goal').trim();
       const details = [
         'היי מתן, הגעתי דרך אתר הסדנאות.',
-        `שמי ${name}, מחברת ${company}.`,
+        company ? `שמי ${name}, מחברת ${company}.` : `שמי ${name}.`,
         `הקהל: ${audience}.`,
-        goal ? `מה נרצה לחזק: ${goal}` : ''
+        goal ? `מה היינו שמחים שיקרה אחרי הסדנה: ${goal}` : ''
       ].filter(Boolean).join('\n');
       const whatsappUrl = `https://wa.me/972542078475?text=${encodeURIComponent(details)}`;
-      window.location.href = whatsappUrl;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
 
     const revealElements = document.querySelectorAll('.reveal');

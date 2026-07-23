@@ -1,14 +1,14 @@
 # Matan Shavit — Workshops Landing Page
 
-Public Hebrew RTL landing-page mockup for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations. The mockup is intended to communicate the concept and visual direction before a final website is built and approved.
+Production-ready Hebrew RTL landing page for Matan Shavit's acting and improvisation workshops for technology teams, managers, and organizations.
 
 ## Project structure
 
 - `index.html` — complete responsive website, including CSS and lightweight JavaScript.
 - `assets/icons/` — local site icon.
 - `assets/images/reference/` — optimized real photographs of Matan used by the public page.
-- `assets/images/generated/` — AI-generated workshop scenes used to communicate the mockup's intended atmosphere.
-- `docs/` — image-generation brief and earlier visual previews retained for the next design/content review.
+- `assets/images/generated/` — workshop imagery used by the public page.
+- `docs/` — internal visual-development materials that are not loaded by the website.
 
 ## Local preview
 
@@ -30,6 +30,14 @@ https://tomeraminof.github.io/matan-workshops-site/
 In the repository settings, select **Pages → Build and deployment → Deploy from
 a branch**, then choose **main** and **/(root)**.
 
+For Wix, use the dedicated embed URL in an **Embed a Site** element:
+
+https://tomeraminof.github.io/matan-workshops-site/?embed=1
+
+Embed mode removes the landing page's own header, footer, and floating WhatsApp
+button to avoid duplicating the surrounding Wix interface. The page remains
+responsive, and the main WhatsApp actions open in a new tab.
+
 ## Contact
 
 The site links directly to WhatsApp at `+972 54-207-8475`. The contact form only composes a WhatsApp message in the visitor's browser; it does not collect or store submissions.
@@ -37,9 +45,7 @@ The site links directly to WhatsApp at `+972 54-207-8475`. The contact form only
 ## Notes
 
 - The page is designed RTL-first and responsive.
-- The landing page is organized into six focused sections: hero, value, workshops, process and outcomes, about, and FAQ/contact.
-- Testimonials and company logos must only be published after verification and permission.
-- Workshop-scene images are AI-generated mockup assets and are identified as such on the page. Review or replace them before publishing an official website.
-- Real photographs of Matan remain in the about and stage sections to support authenticity.
+- The landing page is organized into six focused sections: hero, workshop paths and capabilities, workshop experience and process, contact, about, and FAQ.
+- Real photographs of Matan are used in the hero, about, and stage areas.
 - All assets required by the public page are stored in this repository and use
   relative local paths.
