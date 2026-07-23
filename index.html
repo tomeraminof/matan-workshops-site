@@ -970,6 +970,37 @@
   <script>
     const menuButton = document.getElementById('menuButton');
     const mainNav = document.getElementById('mainNav');
+    const wixParentOrigin = (() => {
+      if (window.parent === window || !document.referrer) return null;
+
+      try {
+        const parentUrl = new URL(document.referrer);
+        const allowedHosts = new Set(['matanshavit.com', 'www.matanshavit.com']);
+        return allowedHosts.has(parentUrl.hostname) ? parentUrl.origin : null;
+      } catch {
+        return null;
+      }
+    })();
+
+    if (wixParentOrigin) {
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+          const targetId = link.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          const offset = Math.max(0, Math.round(
+            target.getBoundingClientRect().top + window.scrollY
+          ));
+
+          window.parent.postMessage({
+            type: 'matan-workshops:navigate',
+            target: targetId,
+            offset
+          }, wixParentOrigin);
+        });
+      });
+    }
 
     menuButton.addEventListener('click', () => {
       const isOpen = mainNav.classList.toggle('open');

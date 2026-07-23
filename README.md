@@ -30,13 +30,57 @@ https://tomeraminof.github.io/matan-workshops-site/
 In the repository settings, select **Pages → Build and deployment → Deploy from
 a branch**, then choose **main** and **/(root)**.
 
-For Wix, use the dedicated embed URL in an **Embed a Site** element:
+For Wix, choose the URL based on which navigation should remain visible:
 
-https://tomeraminof.github.io/matan-workshops-site/?embed=1
+- Keep the landing page's own menu: embed
+  `https://tomeraminof.github.io/matan-workshops-site/` and enable the navigation
+  bridge below.
+- Use Wix's own menu and floating contact action: embed
+  `https://tomeraminof.github.io/matan-workshops-site/?embed=1`.
 
 Embed mode removes the landing page's own header, footer, and floating WhatsApp
 button to avoid duplicating the surrounding Wix interface. The page remains
 responsive, and the main WhatsApp actions open in a new tab.
+
+### Wix navigation bridge
+
+If the full landing page is embedded as one tall Wix iframe, its internal hash
+links cannot scroll the outer Wix page by themselves. The site sends a secure
+navigation message to `matanshavit.com` whenever an internal menu link is
+selected.
+
+Enable **Dev Mode / Velo** on the Wix page and add this page code, replacing
+`#html1` with the ID of the **Embed a Site** element shown in the Wix editor:
+
+```js
+import wixWindowFrontend from 'wix-window-frontend';
+
+const EMBED_ID = '#html1';
+const WIX_HEADER_OFFSET = 80;
+
+$w.onReady(() => {
+  $w(EMBED_ID).onMessage(async (event) => {
+    const message = event.data;
+    if (message?.type !== 'matan-workshops:navigate') return;
+
+    await $w(EMBED_ID).scrollTo();
+    const viewport = await wixWindowFrontend.getBoundingRect();
+    const targetY = Math.max(
+      0,
+      viewport.scroll.y + Number(message.offset || 0) - WIX_HEADER_OFFSET
+    );
+
+    await wixWindowFrontend.scrollTo(0, targetY, {
+      scrollAnimation: true
+    });
+  });
+});
+```
+
+An element inside an iframe cannot stay fixed to the outer Wix browser viewport.
+For a truly floating WhatsApp action on the Wix page, add a Wix button (or the
+Wix WhatsApp widget), pin it to the screen, and use the same `wa.me` URL from
+this page.
 
 ## Contact
 
